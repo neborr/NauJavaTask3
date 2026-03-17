@@ -1,5 +1,4 @@
 package ru.vlad.NauJava.entity;
-
 public class Session {
     private Long id;
     private String movieTitle;
