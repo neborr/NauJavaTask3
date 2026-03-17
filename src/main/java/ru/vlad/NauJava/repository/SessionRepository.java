@@ -1,5 +1,4 @@
 package ru.vlad.NauJava.repository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.vlad.NauJava.entity.Session;

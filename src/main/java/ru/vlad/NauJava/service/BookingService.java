@@ -1,5 +1,4 @@
 package ru.vlad.NauJava.service;
-
 import ru.vlad.NauJava.entity.Session;
 
 public interface BookingService {
