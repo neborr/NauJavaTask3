@@ -1,3 +1,4 @@
+/*
 package ru.vlad.NauJava;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,3 +61,4 @@ public class ConsoleInterface implements CommandLineRunner {
         }
     }
 }
+*/
