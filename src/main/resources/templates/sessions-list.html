@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> <head><title>Сеансы</title></head>
+<body>
+<h1>Список активных сеансов</h1>
+<table border="1">
+    <tr><th>Фильм</th><th>Цена</th></tr>
+    <tr th:each="s : ${sessions}"> <td th:text="${s.movie.title}"></td> <td th:text="${s.price}"></td>
+    </tr>
+</table>
+</body>
+</html>
