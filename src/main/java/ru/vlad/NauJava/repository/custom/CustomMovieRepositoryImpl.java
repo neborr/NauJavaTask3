@@ -3,6 +3,7 @@ package ru.vlad.NauJava.repository.custom;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.*;
+import org.springframework.web.bind.annotation.GetMapping;
 import ru.vlad.NauJava.entity.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class CustomMovieRepositoryImpl implements CustomMovieRepository {
     private EntityManager entityManager;
 
     @Override
+    @GetMapping("/search")
     public List<Movie> findMoviesByCriteria(String title, String genre) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Movie> query = cb.createQuery(Movie.class);
@@ -27,6 +29,7 @@ public class CustomMovieRepositoryImpl implements CustomMovieRepository {
     }
 
     @Override
+    @GetMapping("/tickets")
     public List<Ticket> findTicketsByMovieTitleCriteria(String movieTitle) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Ticket> query = cb.createQuery(Ticket.class);
