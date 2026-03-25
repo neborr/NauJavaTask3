@@ -16,7 +16,7 @@ public class SessionViewController {
 
     @GetMapping("/list")
     public String showSessions(Model model) {
-        model.addAttribute("sessions", sessionRepository.findAll()); // Передаем данные в шаблон [cite: 68]
+        model.addAttribute("sessions", sessionRepository.findAll());
         return "sessions-list";
     }
 }
