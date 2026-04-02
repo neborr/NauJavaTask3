@@ -1,0 +1,22 @@
+package ru.vlad.NauJava.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import ru.vlad.NauJava.repository.SessionRepository;
+
+@Controller
+@RequestMapping("/view/sessions")
+public class SessionViewController {
+
+    @Autowired
+    private SessionRepository sessionRepository;
+
+    @GetMapping("/list")
+    public String showSessions(Model model) {
+        model.addAttribute("sessions", sessionRepository.findAll()); // Передаем данные в шаблон [cite: 68]
+        return "sessions-list";
+    }
+}
