@@ -3,7 +3,7 @@ package ru.vlad.NauJava.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vlad.NauJava.entity.Report;
-import ru.vlad.NauJava.model.ReportStatus;
+import ru.vlad.NauJava.entity.ReportStatus;
 import ru.vlad.NauJava.repository.ReportRepository;
 import ru.vlad.NauJava.repository.UserRepository;
 import ru.vlad.NauJava.repository.MovieRepository;

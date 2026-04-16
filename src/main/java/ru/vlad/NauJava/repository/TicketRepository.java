@@ -13,4 +13,6 @@ import java.util.List;
 public interface TicketRepository extends CrudRepository<Ticket, Long> {
     @Query("SELECT t FROM Ticket t WHERE t.session.movie.title = :movieTitle")
     List<Ticket> findAllByMovieTitle(@Param("movieTitle") String movieTitle);
+
+    boolean existsBySessionAndRowNumberAndSeatNumber(ru.vlad.NauJava.entity.Session session, int rowNumber, int seatNumber);
 }

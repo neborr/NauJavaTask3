@@ -1,5 +1,6 @@
 package ru.vlad.NauJava.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Session {
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
+    @JsonIgnore
     private Movie movie;
 
     @ManyToOne
@@ -23,6 +25,7 @@ public class Session {
     private double price;
 
     @OneToMany(mappedBy = "session")
+    @JsonIgnore
     private List<Ticket> tickets;
 
     public Session() {}

@@ -1,5 +1,6 @@
 package ru.vlad.NauJava.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,10 +12,12 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "session_id")
+    @JsonIgnore
     private Session session;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     private int rowNumber;

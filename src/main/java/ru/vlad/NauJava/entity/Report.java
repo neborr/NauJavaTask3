@@ -3,7 +3,6 @@ package ru.vlad.NauJava.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import ru.vlad.NauJava.model.ReportStatus;
 
 @Entity
 @Table(name = "reports")

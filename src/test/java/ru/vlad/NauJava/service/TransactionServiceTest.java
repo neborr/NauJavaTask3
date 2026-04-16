@@ -30,6 +30,8 @@ public class TransactionServiceTest {
     void testBookingSuccess() {
         User user = new User();
         user.setFullName("Некрасов Владислав Андреевич");
+        user.setUsername("vlad_nekrasov");
+        user.setPassword("password123");
         user.setEmail("vlad@gmail.com");
         user = userRepository.save(user);
 
