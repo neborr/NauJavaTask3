@@ -1,6 +1,7 @@
 package ru.vlad.NauJava.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tickets")
@@ -20,7 +21,11 @@ public class Ticket {
     private int rowNumber;
     private int seatNumber;
 
-    public Ticket() {}
+    private LocalDateTime bookingDate;
+
+    public Ticket() {
+        this.bookingDate = LocalDateTime.now();
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -36,4 +41,7 @@ public class Ticket {
 
     public int getSeatNumber() { return seatNumber; }
     public void setSeatNumber(int seatNumber) { this.seatNumber = seatNumber; }
+
+    public LocalDateTime getBookingDate() { return bookingDate; }
+    public void setBookingDate(LocalDateTime bookingDate) { this.bookingDate = bookingDate; }
 }

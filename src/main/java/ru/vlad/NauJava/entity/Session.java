@@ -22,6 +22,9 @@ public class Session {
     private LocalDateTime startTime;
     private double price;
 
+    private String language;
+    private boolean isThreeD;
+
     @OneToMany(mappedBy = "session")
     private List<Ticket> tickets;
 
@@ -37,6 +40,12 @@ public class Session {
     public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+
+    public String getLanguage() { return language; }
+    public void setLanguage(String language) { this.language = language; }
+    public boolean isThreeD() { return isThreeD; }
+    public void setThreeD(boolean threeD) { isThreeD = threeD; }
+
     public List<Ticket> getTickets() { return tickets; }
     public void setTickets(List<Ticket> tickets) { this.tickets = tickets; }
 }
