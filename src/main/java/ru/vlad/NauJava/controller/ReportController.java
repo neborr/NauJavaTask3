@@ -1,8 +1,9 @@
 package ru.vlad.NauJava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.vlad.NauJava.entity.Report;
+import ru.vlad.NauJava.entity.ReportStatus;
 import ru.vlad.NauJava.repository.ReportRepository;
 import ru.vlad.NauJava.service.ReportService;
 
@@ -17,21 +18,21 @@ public class ReportController {
     private ReportRepository reportRepository;
 
     @PostMapping
-    public String startReport() {
+    public String createReport() {
         Long id = reportService.createReport();
         reportService.generateReportAsync(id);
-        return "Процесс формирования отчета запущен. ID: " + id;
+        return "Отчет запущен. ID: " + id;
     }
 
-    @GetMapping("/{id}")
-    public String getReport(@PathVariable Long id) {
-        Report report = reportRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Отчет с таким ID не найден"));
-
-        return switch (report.getStatus()) {
-            case CREATED -> "Отчет еще в процессе формирования. Попробуйте обновить страницу позже.";
-            case ERROR -> "Произошла ошибка при генерации данного отчета.";
-            case COMPLETED -> report.getContent();
-        };
+    @GetMapping(value = "/{id}", produces = "text/html; charset=UTF-8")
+    public ResponseEntity<String> getReport(@PathVariable Long id) {
+        return reportRepository.findById(id)
+                .map(report -> {
+                    if (report.getStatus() == ReportStatus.COMPLETED) {
+                        return ResponseEntity.ok(report.getContent());
+                    }
+                    return ResponseEntity.ok("Статус отчета: " + report.getStatus());
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 }
